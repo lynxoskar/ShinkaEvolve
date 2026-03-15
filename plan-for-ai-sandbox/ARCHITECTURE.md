@@ -82,7 +82,7 @@ For a collaborative group (10+ people), the following AWS resources are required
 | **The Brain** | ECS (Fargate) | Runs the `ShinkaEvolveRunner` orchestrator. |
 | **The Muscle** | AWS Batch | Concurrent evaluation jobs (backtests/torture) on Spot EC2. |
 | **The Memory** | EFS / S3 | Persistent `ProgramDatabase` and result artifacts. |
-| **The Data** | S3 (DuckLake) | Shared S3 catalogs for data consistency across nodes. |
+| **The Data** | S3 (DuckLake Catalogs) | Shared S3 catalogs for data consistency across nodes. |
 | **The Registry** | S3 Ingest | Bucket for researchers to "push" node artifacts (`shinka_task.json`). |
 | **The Vision** | ALB + WebUI | Hosted Shinka WebUI behind OIDC/Auth. |
 
@@ -92,6 +92,7 @@ For a collaborative group (10+ people), the following AWS resources are required
 *   **Context Fragmentation**: Strict `bars -> positions` signature is the "Common Law." Any data variety must be mapped to the `bars` dictionary.
 *   **Scale Overload**: AWS Batch handles queueing and scaling, preventing Researcher A from starving Researcher B's evolution.
 *   **Knowledge Transfer**: Shinka's multi-island "Migration" enables the Hub to cross-pollinate a BTC signal into an ETH strategy autonomously.
+*   **Minimalist Stack**: We have explicitly opted out of complex orchestrators (Dagster) and heavy logging sidecars (Promtail) to keep the research-to-alpha path as fast as possible.
 
 ## 6. Implementation Plan
 
